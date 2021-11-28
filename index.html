@@ -165,18 +165,9 @@
                 $("#apto").append("<option value='"+i+"01'>"+i+"01</option><option value='"+i+"02'>"+i+"02</option><option value='"+i+"03'>"+i+"03</option><option value='"+i+"04'>"+i+"04</option>");
             }
 
-
-
-            loadNames();
         });
 
-        async function loadNames() {
-            const response = await fetch('./api/propietarios.json');
-            const names = await response.json();
-            console.log(names); 
-            alert(""+names)
-            // logs [{ name: 'Joker'}, { name: 'Batman' }]
-        }
+
 
         function guardar(){
             cargando();
