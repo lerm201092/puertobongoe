@@ -40,7 +40,7 @@ label{
   .hero-text {
     width: 90%;   
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
@@ -50,7 +50,7 @@ label{
       max-height: 200px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 724px) {
       .hero-text {
           top: 45%;
       }
