@@ -1,0 +1,60 @@
+p{
+    color: gray;
+}
+
+.row{
+    margin:0
+}
+
+#logo{
+    max-height: 50px;
+}
+
+#p_frase{
+    position: absolute;
+    top: 60%;
+    text-align: end;
+}
+
+label{
+    font-weight: 550;
+    font-size: 14px;
+}
+
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .hero-image {
+        background-color: #cccccc;
+        height: 950px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        padding: 15px;
+    }
+  
+  .hero-text {
+    width: 90%;   
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+
+  #img-registro{
+      max-height: 200px;
+  }
+
+  @media (max-width: 600px) {
+      .hero-text {
+          top: 45%;
+      }
+      #img-registro{
+          max-height: 150px;
+      }
+  }
