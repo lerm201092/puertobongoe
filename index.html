@@ -183,8 +183,8 @@
             var formData = $("#formulario").serializeObject();
             console.log("Formulario");
             console.log(formData);
-            var url = "./controller/PropietarioController.php";
-            var data = { funcion : "crear", parametros : formData };
+            var url = "http://puertobongoe.tk/api/PropietarioCrear.php";
+            var data = formData ;
             var miInit = {  method: 'POST', body: JSON.stringify(data), headers:{ 'Content-Type': 'application/json' }};
             fetch(url, miInit).then(res => res.json()).catch(error =>  {
                 Swal.fire({
