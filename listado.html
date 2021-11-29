@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./src/css/index.css">
+
+    <link href="./vendor/fontawesome/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./vendor/sweetalert/sweetalert2.min.css">
+    <script src="./vendor/sweetalert/sweetalert2.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">  
+<style>
+    #table_id_length{
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+
+    <!-- INICIO MENU -->
+<div class="row">
+    <div class="col-12" style="min-height: 5px; background-color:#ff435e;">
+        
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="./src/img/logo.png" id="logo" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./">Puerto Bongoe</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./">Registro</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./listado.html">Listado</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./negocios.html">Negocios</a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <div class="row">
+      <div class="col-12 my-4 text-center text-gray">
+          <h4 class="font-weight-bold" style="color: gray;">Listado de Propietarios <br> (<a style="font-size: 14px" href="./api/Descargar.php">Descargar Contactos</a>)</h4>
+      </div>
+  </div>
+
+
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-8">
+                <table id="table_id" class="compact table table-striped w-100">
+                    <thead class="w-100">
+                        <tr class="w-100">
+                            <th>Apto</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                        </tr>
+                    </thead>
+                    <tbody  class="w-100">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+
+      
+
+    <script src="./vendor/jquery/jquery_3_6_0.min.js"></script>
+    <script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            for (i = 1; i < 34; i++) {
+                $("#torre").append("<option value='"+i+"'>"+i+"</option>");
+            }
+
+            for (i = 1; i < 6; i++) {
+                $("#apto").append("<option value='"+i+"01'>"+i+"01</option><option value='"+i+"02'>"+i+"02</option><option value='"+i+"03'>"+i+"03</option><option value='"+i+"04'>"+i+"04</option>");
+            }
+
+            $('#table_id').DataTable({language:{ url: './vendor/es_es.json'}});
+            listar();
+        });
+
+
+
+        function listar(){
+            cargando();
+
+            var url = "./api/PropietarioListar.php";
+            var data = {} ;
+            var miInit = {  method: 'POST', body: JSON.stringify(data), headers:{ 'Content-Type': 'application/json' }};
+            fetch(url, miInit).then(res => res.json()).catch(error =>  {
+                Swal("Puerto Bongoe", "Error al ejecutar el proceso, contacte al administrador", "warning")
+            }).then(resp => {
+                console.log(resp);
+                Swal.close();
+                $('#table_id').DataTable().clear().destroy();
+
+                setTimeout(() => {
+                    $('#table_id').DataTable( {
+                    "data": resp,
+                    "language" : { url: "./vendor/es_es.json"},
+                    "columns": [
+                        { "data": "apto" },
+                        { "data": "nombre" },
+                        { "data": "telefono" }
+                    ]
+                } );
+                }, 100);
+
+
+            });
+
+        }
+
+        function descargar(){
+            alert("Hola mundo");
+        }
+
+        function cargando(){
+            Swal({
+                title: 'Puerto Bongoe',
+                html: '¡Espere, por favor!'
+            })
+            
+        }
+
+
+        $.fn.serializeObject = function()
+        {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+        };
+
+
+    </script>
+</body>
+</html>

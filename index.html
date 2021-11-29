@@ -59,30 +59,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="./">Puerto Bongoe</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+          <a class="nav-link" href="./">Registro</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+            <a class="nav-link" href="./listado.html">Listado</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="./negocios.html">Negocios</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+
     </div>
   </nav>
 
@@ -91,7 +80,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 border py-4" style="background-color: #00000069;">
                 <div class="row">
-                    <div class="col-12"><h4 class="w-100 text-center">REGISTRO DE PROPIETARIOS 3.0</h4></div>
+                    <div class="col-12"><h4 class="w-100 text-center">REGISTRO DE PROPIETARIOS</h4></div>
                     <div class="col-md-3 text-center">
                         <img src="./src/img/Builder.png" id="img-registro">
                     </div>
@@ -165,6 +154,17 @@
                 $("#apto").append("<option value='"+i+"01'>"+i+"01</option><option value='"+i+"02'>"+i+"02</option><option value='"+i+"03'>"+i+"03</option><option value='"+i+"04'>"+i+"04</option>");
             }
 
+
+
+
+            
+
+
+
+
+
+
+
         });
 
 
@@ -174,7 +174,7 @@
             var formData = $("#formulario").serializeObject();
             console.log("Formulario");
             console.log(formData);
-            var url = "https://unhurrying-stack.000webhostapp.com/api/PropietarioCrear.php";
+            var url = "./api/PropietarioCrear.php";
             var data = formData ;
             var miInit = {  method: 'POST', body: JSON.stringify(data), headers:{ 'Content-Type': 'application/json' }};
             fetch(url, miInit).then(res => res.json()).catch(error =>  {
@@ -184,23 +184,19 @@
                 icon: 'warning'})
             }).then(resp => {
 
-
-                Swal.fire({
+                Swal({
                 title: 'Puerto Bongoe',
-                text: "Registro Satisfactorio",
-                icon: 'success',
+                text: 'Registrado',
+                type: 'success',
                 showCancelButton: false,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Aceptar'
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, keep it'
                 }).then((result) => {
-                    if (result.isConfirmed) {
-                        location.reload();
-                    }
-                })
-
-                console.log("Respuesta");
-                console.log(resp);
+                if (result.value) {
+                    location.reload();
+                } 
+                });
+              
             });
 
         }

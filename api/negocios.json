@@ -1,0 +1,19 @@
+[{
+    "img" : "tratamiendo.png",
+    "nombre" : "TRATAMIENTO TONICO",
+    "descripcion": "Tratamiendo despigmentante para el acne, manchas y zonas intimas",
+    "direccion" : "Pto Bongoe T29 / 301",
+    "telefono" : 3023895848,
+    "domicilios" : "NO",
+    "whatsapp" : "+573023895848"
+},
+{
+    "img" : "arepas.png",
+    "nombre" : "Arepas Kon Ke",
+    "descripcion": "Arepas rellenas.",
+    "direccion" : "Calle 49 # 11 - 15, Soledad 2000",
+    "telefono" : 3007609582,
+    "domicilios" : "NO",
+    "whatsapp" : "+53007609582",
+    "instagram": "arepaskonke"
+}]
