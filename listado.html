@@ -116,14 +116,28 @@
 
                 setTimeout(() => {
                     $('#table_id').DataTable( {
-                    "data": resp,
-                    "language" : { url: "./vendor/es_es.json"},
-                    "columns": [
-                        { "data": "apto" },
-                        { "data": "nombre" },
-                        { "data": "telefono" }
-                    ]
-                } );
+                        "data": resp,
+                        "language" : { url: "./vendor/es_es.json"},
+                        "columns": [
+                            { "data": "apto" },
+                            { "data": "nombre" },
+                            { "data": "telefono" }
+                        ],
+                        "columnDefs": [{   
+                            "render": function ( data ) {
+                                data = data.replace(" / ", "-");
+                                return data;
+                            },
+                            "targets": 0
+                        }, {   
+                            "render": function ( data ) {
+                                data = data.substring(0, data.length - 2);
+                                data = data+"**";
+                                return data;
+                            },
+                            "targets": 2
+                        } ]
+                    });
                 }, 100);
 
 

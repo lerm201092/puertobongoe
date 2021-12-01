@@ -68,7 +68,7 @@
   </div>
 
 
-        <div class="row justify-content-center px-2 mb-5">           
+        <div id="contenedor" class="row justify-content-center px-2 mb-5">           
 
 
         </div>
@@ -81,7 +81,47 @@
 
     <script>
         $(document).ready(function(){
+            fetch('./api/negocios.json')
+            .then(response => response.json())
+            .then(data => {
+                for (x of data) {
+                    var html = `<div class="col-md-4 p-1">
+                <div class="row p-2 bg-white align-items-center" style="border: 2px solid gray; border-radius: 5px">
+                    <div class="col-4">
+                        <img src="./src/img/negocios/`+x.img+`" class="w-100" alt="img_negocios">
+                    </div>
+                    <div class="col-8 px-0">
+                        <h5>`+x.nombre+`</h5>                      
+                            <table>
+                                <tr><td><b>Descripción:</b>`+x.descripcion+`</td></tr>
+                                <tr><td><b>Direccion: </b>`+x.direccion+`</td></tr>
+                                <tr><td><b>Telefono: </b>`+x.telefono+`</td></tr>
+                                <tr><td><b>Domicilios: </b>`+x.domicilio+`</td></tr>
+                                <tr><td>
+                                    <b>`;
 
+                    if(x.instagram){
+                        html += `<a class="font-weight-bold" target="_blank" href="https://www.instagram.com/arepaskonke">
+                                            <i class='fab fa-instagram mr-2'></i>Instagram
+                                        </a> - `;
+                    }
+                                        
+                                    html +=`<a class="font-weight-bold" target="_blank" href="https://api.whatsapp.com/send?phone=57`+x.telefono+`">
+                                            <i class='fab fa-whatsapp mr-2'></i>WhatsApp
+                                        </a> - 
+                                        <a class="font-weight-bold" target="_blank" href="tel:+57`+x.telefono+`">
+                                            <i class='fas fa-phone mr-2'></i>Llamar
+                                        </a>
+                                    </b>
+                                </td></tr>
+                            </table>
+                    </div>
+                </div>
+            </div>`;
+
+            $("#contenedor").append(html);
+                }
+            });
         });
 
     </script>

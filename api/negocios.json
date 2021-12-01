@@ -1,19 +1,28 @@
 [{
-    "img" : "tratamiendo.png",
-    "nombre" : "TRATAMIENTO TONICO",
+    "img" : "tratamiento.png",
+    "nombre" : "Tratamiento Tonico",
     "descripcion": "Tratamiendo despigmentante para el acne, manchas y zonas intimas",
     "direccion" : "Pto Bongoe T29 / 301",
     "telefono" : 3023895848,
-    "domicilios" : "NO",
+    "domicilio" : "NO",
     "whatsapp" : "+573023895848"
 },
 {
-    "img" : "arepas.png",
+    "img" : "arepa.png",
     "nombre" : "Arepas Kon Ke",
     "descripcion": "Arepas rellenas.",
     "direccion" : "Calle 49 # 11 - 15, Soledad 2000",
     "telefono" : 3007609582,
-    "domicilios" : "NO",
-    "whatsapp" : "+53007609582",
+    "domicilio" : "SI",
+    "whatsapp" : "+573007609582",
     "instagram": "arepaskonke"
+},
+{
+    "img" : "cervezas.png",
+    "nombre" : "Donde TATI",
+    "descripcion": "Hielo, Gaseosas, Cervezas bien frias",
+    "direccion" : "Pto Bongoe T2 / 201",
+    "telefono" : 3106489153,
+    "domicilio" : "NO",
+    "whatsapp" : "+573106489153"
 }]
